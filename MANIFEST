@@ -1,0 +1,14 @@
+lib/Cvs/Brancher.pm
+lib/Mail/Template.pm
+ChangeLog
+INSTALL
+MANIFEST
+Makefile.PL
+README
+scripts/branch.pl
+scripts/scheduled_build.pl
+scripts/test_web_scheduler.sh
+t/test.t
+doc/OVERVIEW
+doc/PLAN
+doc/branch_process.svg

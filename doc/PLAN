@@ -1,0 +1,119 @@
+
+Release 0.10 - DONE
+============
+   * (DONE) Flesh out README
+   * (DONE) Put 'MANIFEST' and 'Makefile.PL' into MANIFEST
+   * (DONE) Define @collision inside "merge_branch" or it won't be tied to the
+     instantiated object.  You will also need to make the find's "wanted"
+     function anonymous to avoid warnings.  Cvs::Brancher
+   * (DONE) anon ref to single-item list not needed in mkpath/rmtree for
+     Cvs::Brancher 
+   * (DONE) To check more strictly for collisions, use $File::Find::name 
+     instead of $_ 
+   * (DONE) Explain use of message->{'file'} explicitly
+   * (DONE) Remove cvs_options from Mail::Template
+
+Release 0.20 - DONE
+============
+   * (DONE) Fix mkpath of '$HOME' directory
+   * (DONE) Find why it did not check out after merge collision
+   * (DONE) Find why it got a merge collision when it shouldn't have
+   * (DONE) Change $! to $? in Cvs::Brancher
+   * (DONE) "rm: cannot lstat `/tmp/testing.log': No such file or directory"
+   * (DONE) Do 3 scheduled dry runs of the tool to webtest
+   * (DONE) Document scheduled_build.pl and branch.pl
+   * (DONE) Alphabetize application cmdline options
+   * (DONE) Verify enough options are getting passed to scheduled_build
+   * (DONE) Document chdir for merge
+   * (DONE) Ensure testing.log gets appended to error email msgs
+   * (DONE) Test changing the homepage on webdev via a schedule
+   * (DONE) branch.pl:  need to test for $opt_helplong and $opt_man
+   * (DONE) Fix the branch-branch substitutions
+
+Release 0.30
+============
+   * (DONE) sb:  merge emails might need information on which machine to
+     do things on 
+   * (DONE) sb:  change subject for "fatal" error to something less
+     drastic?  It wasn't fatal if it rolled it out without a merge.  :)
+   * (DONE) sb:  error/success emails for roll-out should include
+     information on which rollout it was (maybe just date/time)
+   * (DONE) Ensure we can detect the webbuild.sh fail indicator
+   * (DONE) Elaborate on error/success messages in scheduled_build.pl
+   * (DONE) Review/revise email handling
+   * (DONE) Make sure die messages show up in testing log
+
+Release 1.00
+============
+   * (DONE) Turn down/off debugging messages
+   * (DONE) Check error handling code for merge_branch in Cvs::Brancher
+     to see if it stops treating CVS non-errors as fatal
+   * (DONE) Make sure script cleans up after itself if appropriate
+   * (DONE) For complex actions explain what the prereqs are
+   * (DONE) In merge_branch comment that it expects to find HEAD checked
+     out in $co_dir 
+   * (DONE) Add tagging for 'premerge' and 'merged'
+   * (DONE) Do a scheduled run of the tool to www.osdl.org
+   * (DONE) Release Cvs-Brancher 1.00 to Freshmeat
+   * (DONE) Notify Kavi of Cvs-Brancher
+
+Release 1.10
+============
+   * Add checks that sufficient disk space exists before running
+   * branch.pl:  for safety, add "no_ignore_case" to Getopt::Long::Configure
+   * branch.pl:  test for successful instantiation of Cvs::Brancher
+   * branch.pl:  should set a better (unique) default working area,
+     possible built from File::Temp's "tempdir" function
+   * branch.pl:  need to check rmtree warnings/errors as noted for
+     Cvs::Brancher 
+   * branch.pl:  need to test the return code from the "at" command execution
+   * In the find, examine only the final portion of the path.  (Perhaps
+     using File::Spec routines).  Right now, all files listed in a
+     directory (strangely) named "blah/foo/bar.#hash/" would get
+     flagged. Cvs::Brancher
+
+Release 1.20
+============
+   * sb:  for safety, add "no_ignore_case" to Getopt::Long::Configure
+   * sb:  you check for a valid $branch_name twice (best to remove the
+     one before the opt_help test?)
+   * sb:  test for successful instantiation of Cvs::Brancher
+   * sb:  need to test for $opt_helplong and $opt_man
+   * sb:  should set a default working area, possible built from
+     File::Temp's "tempdir" function (or verify that one has been set) 
+   * sb:  verify that all the "required" cmdline options have been set.
+   * sb:  might want to detail in documentation the powerful effects of
+     the "die-on-fail" (or lack there-of) option
+   * sb:  should the default value of "die-on-fail" be 0?  That's very
+     powerful. 
+   * sb:  need to check rmtree warnings/errors as noted above
+   * sb:  test return code from "move"
+   * Review how to make tgen better aware of output state in errors
+
+Release 1.30
+============
+   * Check for (-w $dir) in create_working_area in Cvs::Brancher
+   * Need to correctly trap warnings from rmtree (and test for error
+     conditions) as outlined at the end of the "File::Path" man page
+   * Don't use warn for diagnostics; leave this to Cvs::Brancher caller
+   * Maybe include a "_cvs_path" option to force it to use CVS from a
+     specific location?  Cvs::Brancher
+
+
+Release 1.40
+============
+   * Change send_template_email to use named parameters instead of a list
+   * Remove/replace hardcoded INCLUDE_PATH from Mail::Template
+   * Remove warn's and leave diagnostic output to module caller
+   * Change to using File::Spec routines for file handling in Mail::Template
+
+Release 1.50
+============
+   * Review/revise global error string in Mail::Template to be a
+     function
+   * Release Mail::Template as a separate module to CPAN
+
+
+Release Future
+==============
+   * Write some tests for the t/ directory

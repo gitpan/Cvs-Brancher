@@ -1,0 +1,51 @@
+Revision history for Perl script Cvs-Brancher.
+
+1.01  Tue Oct 25 12:00:00 2003
+	- Revised email to be a little clearer on details
+	- Added another example script
+	
+1.00  Thu Oct 9 12:36:00 2003
+	- Added tagging for 'premerge' and 'merged' in scheduled_build.pl
+	- Completed testing against production
+	- Various minor bug fixes, code cleanup, etc.
+	- Created some example scripts
+	
+0.30  Thu Oct 2 14:46:00 2003
+	- Add mention of which hostname the at jobs run on
+	- Change subject line for errors to not say 'Fatal'
+	- Add mention of rollout / date / time to error/success emails
+	- Ensure we can detect the webbuild.sh fail indicator
+	- Elaborate on error/success messages in scheduled_build.pl
+	- Review/revise email handling
+	- Make sure die messages show up in testing log
+	
+0.20  Wed Oct 1 18:42:00 2003
+	- Fix mkpath of '$HOME' directory
+	- Find why it did not check out after merge collision
+	- Find why it got a merge collision when it shouldn't
+	  have
+	- Change $! to $? in Cvs::Brancher
+	- "rm: cannot lstat `/tmp/testing.log': No such file or
+	  directory"
+	- Document scheduled_build.pl and branch.pl
+	- Alphabetize application cmdline options
+	- Verify enough options are getting passed to
+	  scheduled_build
+	- Document chdir for merge
+	- Ensure testing.log gets appended to error email msgs
+	- Test changing the homepage on webdev via a schedule
+	- branch.pl:  need to test for $opt_helplong and $opt_man
+	- Fix the branch-branch substitutions
+	
+0.10  Tue Sep 30 12:24:00 2003
+	- Fixed up typos in OVERVIEW, branch.pl
+	- Removed local sub for find in Cvs::Brancher::merge_branch
+	- Made @collision a local var in Cvs::Brancher::merge_branch
+	- Changed mkpath to use $dir instead of [$dir]
+	- Created PLAN outlining future development tasks
+	- Fleshing out README & explaining how to use
+	- Documenting 'file' member of message in send_template_email
+	
+0.00  Tue Sep  9 10:38:31 2003
+	- original version; created by sdist 1.4
+

@@ -1,0 +1,68 @@
+
+This is the README file for Cvs-Brancher, a perl module and script for
+performing scheduled branch/merge operations on a CVS module using
+the `at` command.
+
+The motivation for developing this is to allow for scheduled
+build/deployment actions to be performed for websites that are
+maintained out of a version control system like CVS, as opposed to a
+database-driven system.
+
+Another example for where this might prove useful is in the scheduled
+rollout of cfengine changes to a data center, where the cfengine config
+files are stored in a CVS module.  There's almost certainly dozens of
+other uses for this.
+
+For a more detailed explanation, see the file doc/OVERVIEW
+
+Basic usage is straightforward:
+
+1.  branch.pl modulename YYMMDD HH:MM
+
+2.  cvs checkout ...  (use info given by the branch.pl command)
+    ...modify modify...
+    cvs commit
+    repeat as desired
+
+3.  ...wait until scheduled time...
+    receive email about change
+
+This checks 'modulename' out of local CVS, establishes a branch, and
+schedules a build and merge to occur at the given date and time.
+
+Here's a real-world example of calling the branch.pl script:
+
+  branch.pl osdl_extranet 01/23/03 05:00 \
+    --debug=5 \
+    --quiet \
+    --smtp=smtp \
+    --cvs_root_dir=':pserver:www@cvs.pdx.osdl.net:/var/cvs' \
+    --working_area='/tmp' \
+    --build_script='webbuild.sh' \
+    --notify_from='www@osdl.org' \
+    --notify_to='osdl_sysadmin@osdl.org' \
+    --logfile=/tmp/testing.log
+
+
+For more information on how to use the script including details about
+available commandline options, after installation see the man pages via:
+
+  man branch.pl
+
+There are also man-pages for several behind-the-scenes components for
+those with more advanced interests:
+
+  man Cvs::Brancher
+  man Mail::Template
+  man scheduled_build.pl
+
+For instructions on how to install the package, see the file INSTALL.
+
+Problems, questions, etc. may be sent to bryce@osdl.org or
+brycehar@bryceharrington.com.
+
+Cvs::Brancher is Copyright (c) 2003, by Bryce Harrington. 
+All rights reserved. You may distribute this code under the terms 
+of either the GNU General Public License or the Artistic License, 
+as specified in the Perl README file.
+
